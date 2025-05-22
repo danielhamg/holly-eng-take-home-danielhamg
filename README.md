@@ -1,5 +1,10 @@
 # Holly Engineering Take-Home Assignment
 
+**result:**
+
+![result](./Screenshot%202025-05-21%20at%2010.39.10 PM.png)
+
+
 ## Overview
 
 This take-home assignment is designed to evaluate your technical skills across several areas important to our engineering team. Please spend no more than 2-3 hours on this task. It's completely fine if you don't finish everything - we're more interested in understanding your approach and thought process.
