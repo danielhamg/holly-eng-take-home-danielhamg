@@ -42,7 +42,7 @@ export default function Chat() {
             <div
               key={idx}
               className={`flex ${
-                msg.sender === "user" ? "justify-end" : "justify-start"
+                msg.sender === "user" ? "justify-start" : "justify-end"
               }`}
             >
               <div
