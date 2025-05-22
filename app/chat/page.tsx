@@ -17,26 +17,40 @@ type Message = {
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSend = (e: React.FormEvent) => {
+  const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
 
     const userMsg: Message = { text: input, sender: "user" };
     setMessages((msgs) => [...msgs, userMsg]);
     setInput("");
+    setLoading(true);
 
-    // Simulate bot reply
-    setTimeout(() => {
-      const reply =
-        exampleReplies[Math.floor(Math.random() * exampleReplies.length)];
-      setMessages((msgs) => [...msgs, { text: reply, sender: "bot" }]);
-    }, 500);
+    // Call your API
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: input }),
+    });
+    const data = await res.json();
+
+    setMessages((msgs) => [
+      ...msgs,
+      { text: data.reply, sender: "bot" },
+    ]);
+    setLoading(false);
   };
 
   return (
     <div className="flex flex-col h-screen w-screen items-center justify-center bg-gray-50">
       <div className="w-full max-w-md flex flex-col flex-1 border rounded shadow bg-white p-4 h-[70vh]">
+        <header className="mb-4 text-center">
+          <h1 className="text-2xl font-bold text-blue-600">
+            Chat
+          </h1>
+        </header>
         <div className="flex-1 overflow-y-auto mb-4 space-y-2">
           {messages.map((msg, idx) => (
             <div
@@ -64,12 +78,14 @@ export default function Chat() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message..."
+            disabled={loading}
           />
           <button
             type="submit"
             className="bg-blue-500 text-white px-4 py-2 rounded"
+            disabled={loading}
           >
-            Send
+            {loading ? "..." : "Send"}
           </button>
         </form>
       </div>
