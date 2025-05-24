@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 const exampleReplies = [
   "Hello! How can I help you?",
@@ -56,7 +57,7 @@ export default function Chat() {
             <div
               key={idx}
               className={`flex ${
-                msg.sender === "user" ? "justify-start" : "justify-end"
+                msg.sender === "user" ? "justify-end" : "justify-start"
               }`}
             >
               <div
@@ -66,7 +67,11 @@ export default function Chat() {
                     : "bg-gray-200 text-gray-800"
                 }`}
               >
-                {msg.text}
+                {msg.sender === "bot" ? (
+                  <ReactMarkdown>{msg.text}</ReactMarkdown>
+                ) : (
+                  msg.text
+                )}
               </div>
             </div>
           ))}

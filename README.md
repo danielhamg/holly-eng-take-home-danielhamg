@@ -2,7 +2,7 @@
 
 **result:**
 
-![result](./Screenshot%202025-05-21%20at%2010.39.10 PM.png)
+![result](./result.png)
 
 Steps:
 - add Gemini API key inside `.env.local` file.
