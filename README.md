@@ -2,7 +2,7 @@
 
 **result:**
 
-![result](./result.png)
+![result](public/result.png)
 
 ## Steps to run:
 
