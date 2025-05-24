@@ -4,11 +4,11 @@
 
 ![result](./result.png)
 
-Steps:
+## Steps to run:
+
 - add Gemini API key inside `.env.local` file.
-```
- GEMINI_API_KEY=API_KEY_HERE
- ```
+`GEMINI_API_KEY=API_KEY_HERE`
+- run `npm run dev`
 
 
 
@@ -65,8 +65,15 @@ You'll build a simple chat interface that allows users to query job and salary i
 Please submit:
 
 1. The complete codebase in a public GitHub repository
+   - https://github.com/danielhamg/holly-eng-take-home-danielhamg
 2. Instructions for running the application locally
+   - In "Steps to run:" section
 3. A brief writeup explaining your approach, technologies used, and any challenges you faced
+   - My main approach to this was to use VSCode's copilot due to my limited experience in next.js, incrementally creating functionality needed.
+   - First I asked it to make the chat feature and used sample responses to initialize an interface.
+   - Then I researched which llm to use and integrated it. For the LLM to call, I used a free gemini version. Interesting, when I ask copilot to edit the code, it would often override the model I am using from gemini with a pro version I do not have. But writing a comment asking copilot to not change the line seems to work fine.
+   - Then I put in instructions to pre-process data before sending it to Gemini.
+   - This is my first time since working at my previous job, that I actually am using an LLM to do a coding project. It showed me just how powerful AI coding tools are.
 
 ## Notes
 
